@@ -93,7 +93,7 @@ main {
 @media (max-width: 768px) {
     .tab-content {
       padding: 20px;
-      height: calc(100vh - 120px);
+      height: calc(100vh - 200px);
     }
   
     .tab-view button {
