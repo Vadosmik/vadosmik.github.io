@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Page Title</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <main>
+        <p id="main-text"> VADOSMIK </p>
+    </main>
+
+    <nav class="tab-view" aria-label="Tabulator">
+        <ul>
+            <li><button type="button" id="cv">CV</button></li>
+            <li><button type="button" id="about">ABOUT ME</button></li>
+            <li><button type="button" id="project">PROJECT</button></li>
+        </ul>
+    </nav>
+
+    <!-- Okna -->
+    <section id="cv" class="tab-content">To jest zawartość CV.</section>
+    <section id="about" class="tab-content">Tu coś o mnie.</section>
+    <section id="project" class="tab-content">Moje projekty.</section>
+
+</body>
+
+<script>
+    const buttons = document.querySelectorAll('.tab-view button');
+    const sections = document.querySelectorAll('.tab-content');
+
+    let activeTabId = null;
+
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            const tabId = button.getAttribute('id');
+
+            if (activeTabId === tabId) {
+                activeTabId = null;
+                sections.forEach(sec => sec.classList.remove('open'));
+                buttons.forEach(btn => btn.classList.remove('active'));
+            } else {
+                activeTabId = tabId;
+                sections.forEach(sec => {
+                    sec.classList.toggle('open', sec.id === tabId);
+                });
+                buttons.forEach(btn => btn.classList.toggle('active', btn.id === tabId));
+            }
+        });
+    });
+</script>
+
+</html>
