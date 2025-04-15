@@ -97,11 +97,103 @@ main {
     }
   
     .tab-view button {
-      font-size: 14px;
-      padding: 8px 14px;
-    }
-  
-    #main-text {
-      text-shadow: 1px 4px 0px rgba(255, 219, 88, 0.6);
+      font-size: 25px;
+      padding: 12px 20px;
     }
   }
+
+
+
+
+  /* 📄 Styl PDF i link do pobrania */
+  .cv-preview-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+  
+  .cv-preview {
+    max-width: 100%;
+    max-height: 70vh;
+    border-radius: 16px;
+    background-color: white;
+    box-shadow: 0 0 20px rgba(255, 221, 85, 0.3);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .cv-preview:hover {
+    transform: scale(1.02);
+  }
+  
+  .cv-actions {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .cv-button {
+    padding: 12px 24px;
+    background-color: #ffdd55;
+    color: #000;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 10px rgba(255, 221, 85, 0.2);
+  }
+  
+  .cv-button:hover {
+    background-color: #ffe97a;
+  }
+  
+  .cv-button.download::after {
+    content: " ↓";
+  }
+
+/* 🧠 About Me / Tekst */
+#about p {
+  font-size: 1.3rem;
+  line-height: 1.8;
+  color: #eee;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* 📦 Projekty */
+.project {
+  background-color: #2b0035;
+  border-left: 5px solid #ffdd55;
+  padding: 20px;
+  margin-bottom: 30px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+}
+
+.project h3 {
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+  color: #ffdd55;
+}
+
+.project p {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  color: #ddd;
+}
+
+.project a {
+  display: inline-block;
+  margin-right: 20px;
+  font-weight: bold;
+  color: #ffd86b;
+  text-decoration: none;
+  border-bottom: 1px dashed #ffd86b;
+}
+
+.project a:hover {
+  color: #fff;
+  border-color: #fff;
+}

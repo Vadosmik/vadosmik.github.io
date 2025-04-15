@@ -10,7 +10,7 @@
 <body>
 
     <main>
-        <p id="main-text"> VADOSMIK </p>
+        <p id="main-text"> VADZIM MIKANOVICH </p>
     </main>
 
     <nav class="tab-view" aria-label="Tabulator">
@@ -22,9 +22,38 @@
     </nav>
 
     <!-- Okna -->
-    <section id="cv" class="tab-content">To jest zawartość CV.</section>
-    <section id="about" class="tab-content">Tu coś o mnie.</section>
-    <section id="project" class="tab-content">Moje projekty.</section>
+    <section id="cv" class="tab-content">
+        <div class="cv-preview-container">
+            <img src="img/VadimMikanovich_CV.pdf" alt="Preview of CV" class="cv-preview" />
+          
+            <div class="cv-actions">
+              <a href="img/VadimMikanovich_CV.pdf" target="_blank" class="cv-button">Zobacz pełny CV (PDF)</a>
+              <a href="img/VadimMikanovich_CV.pdf" download class="cv-button download">Pobierz CV</a>
+            </div>
+          </div>
+    </section>
+    <section id="about" class="tab-content">
+        <p>
+            Jestem pasjonatem technologii z doświadczeniem w tworzeniu nowoczesnych stron internetowych. Interesuje mnie
+            frontend, projektowanie interfejsów oraz automatyzacja. Z łatwością uczę się nowych technologii i potrafię
+            szybko wdrażać praktyczne rozwiązania. Szukam możliwości rozwoju w zespole IT, gdzie mógłbym wykorzystać
+            swoje umiejętności techniczne oraz zaangażowanie.
+        </p>
+    </section>
+    <section id="project" class="tab-content">
+        <div class="project">
+            <h3>Nazwa projektu</h3>
+            <p>Krótki opis: co robi projekt, jakie technologie.</p>
+            <p><strong>Technologie:</strong> HTML, CSS, JavaScript</p>
+            <a href="https://link-do-projektu" target="_blank">Zobacz projekt</a>
+            <a href="https://github.com/twojprofil/projekt" target="_blank">Kod źródłowy</a>
+        </div>
+
+        <div class="project">
+            <h3>Nazwa drugiego projektu</h3>
+            <p>Opis itd.</p>
+        </div>
+    </section>
 
 </body>
 
