@@ -205,7 +205,6 @@ main {
 }
 
 /* projekt */
-
 .project {
   background-color: var(--project-bg);
   border-left: 5px solid var(--highlight);
@@ -227,6 +226,18 @@ main {
   color: var(--project-text);
 }
 
+.project ul {
+  margin: 10px 0 15px 20px;
+  padding-left: 1rem;
+  color: var(--project-text);
+  list-style-type: disc;
+  font-size: 1.05rem;
+}
+
+.project-links {
+  margin-top: 15px;
+}
+
 .project a {
   display: inline-block;
   margin-right: 20px;
@@ -234,9 +245,38 @@ main {
   color: var(--project-link);
   text-decoration: none;
   border-bottom: 1px dashed var(--highlight);
+  transition: color 0.3s ease, border-color 0.3s ease;
 }
 
 .project a:hover {
   color: var(--project-link-hover);
   border-color: var(--project-link-hover);
+}
+
+/* Nowe style dla przycisków */
+.btn {
+  display: inline-block;
+  background-color: var(--highlight);
+  color: #fff;
+  padding: 0.4rem 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 6px;
+  margin-right: 15px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: var(--project-link-hover);
+}
+
+.btn-secondary {
+  background-color: var(--project-link);
+  color: #fff;
+}
+
+.btn-secondary:hover {
+  background-color: var(--project-link-hover);
 }
