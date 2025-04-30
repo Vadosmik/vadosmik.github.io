@@ -101,17 +101,17 @@
     padding: 10px 18px;
     font-size: 16px;
     color: white;
-    background: rgba(255, 255, 255, 0.15); /* Półprzezroczysty */
-    backdrop-filter: blur(4px);           /* Lekki blur */
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(4px);
     border: 1px solid white;
     border-radius: 5px;
     cursor: pointer;
-    z-index: 1001;                        /* ponad liśćmi */
+    z-index: 1000;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     transition: background 0.3s ease, transform 0.2s ease;
   }
   
   #animation_btn:hover {
-    background: rgba(255, 255, 255, 0.3); /* jaśniej przy hoverze */
-    transform: scale(1.05);              /* lekki zoom */
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
   }
