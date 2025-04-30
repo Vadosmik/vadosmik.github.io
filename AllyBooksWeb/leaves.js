@@ -1,48 +1,75 @@
-function spawnLeaf() {
-    const leaf = document.createElement('div');
+const leafImages = [
+    'leaf1.png',
+    'leaf2.png',
+    'leaf3.png',
+    'leaf4.png',
+    'leaf5.png',
+    'leaf6.png',
+    'leaf7.png',
+    'leaf8.png'
+  ];
+
+  function spawnLeaf() {
+    const leaf = document.createElement('img');
     leaf.classList.add('leaf');
-    leaf.textContent = '🍂';
+  
+    const randomImage = leafImages[Math.floor(Math.random() * leafImages.length)];
+    leaf.src = `img/${randomImage}`;
+  
     leaf.style.left = `${Math.random() * 90}vw`;
-    leaf.style.top = '0px';
+    leaf.style.top = `-30px`; // zaczyna poza ekranem
     document.body.appendChild(leaf);
-
+  
+    // Losowe parametry wiatru i fali
+    const speed = 0.5 + Math.random() * 1.5;         // Prędkość opadania
+    const amplitude = 30 + Math.random() * 20;       // Amplituda fali w px
+    const frequency = 0.01 + Math.random() * 0.02;   // Częstotliwość fali
+    const rotationSpeed = Math.random() * 2 - 1;     // Kierunek obrotu
+  
+    let x = parseFloat(leaf.style.left);
     let y = 0;
+    let angle = 0;
+  
     const fall = setInterval(() => {
-        y += 2;
-        leaf.style.top = `${y}px`;
-        leaf.style.transform = `rotate(${Math.sin(y / 20) * 10}deg)`;
-
-        // Sprawdź, czy liść dotknął któregoś przycisku
-        const leafRect = leaf.getBoundingClientRect();
-        const buttons = document.querySelectorAll('.buttons a');
-
-        for (const btn of buttons) {
-            const btnRect = btn.getBoundingClientRect();
-            const collision =
-                leafRect.bottom >= btnRect.top &&
-                leafRect.top <= btnRect.bottom &&
-                leafRect.left >= btnRect.left &&
-                leafRect.right <= btnRect.right;
-
-            if (collision) {
-                clearInterval(fall);
-                setTimeout(() => {
-                    leaf.classList.add('fade-out');
-                    setTimeout(() => leaf.remove(), 1000);
-                }, 1500);
-                return;
-            }
+      y += speed;
+      angle += rotationSpeed;
+  
+      // Oscylacja na boki
+      const offsetX = amplitude * Math.sin(y * frequency);
+  
+      leaf.style.top = `${y}px`;
+      leaf.style.left = `calc(${x}vw + ${offsetX}px)`;
+      leaf.style.transform = `rotate(${angle}deg)`;
+  
+      // Sprawdzenie kolizji z przyciskami
+      const leafRect = leaf.getBoundingClientRect();
+      const buttons = document.querySelectorAll('.buttons a');
+      for (const btn of buttons) {
+        const btnRect = btn.getBoundingClientRect();
+        const collision =
+          leafRect.bottom >= btnRect.top &&
+          leafRect.top <= btnRect.bottom &&
+          leafRect.left >= btnRect.left &&
+          leafRect.right <= btnRect.right;
+  
+        if (collision) {
+          clearInterval(fall);
+          setTimeout(() => {
+            leaf.classList.add('fade-out');
+            setTimeout(() => leaf.remove(), 1000);
+          }, 1500);
+          return;
         }
-
-        // Jeśli spadł poza ekran
-        if (y > window.innerHeight) {
-            clearInterval(fall);
-            setTimeout(() => {
-                leaf.classList.add('fade-out');
-                setTimeout(() => leaf.remove(), 1000);
-            }, 2000);
-        }
+      }
+  
+      if (y > window.innerHeight + 40) {
+        clearInterval(fall);
+        setTimeout(() => {
+          leaf.classList.add('fade-out');
+          setTimeout(() => leaf.remove(), 1000);
+        }, 2000);
+      }
     }, 20);
-}
+  }
 
 setInterval(spawnLeaf, 1000);
