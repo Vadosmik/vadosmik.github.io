@@ -1,3 +1,5 @@
+const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
 const leafImages = [
     'leaf1.png',
     'leaf2.png',
@@ -44,21 +46,23 @@ const leafImages = [
       // Sprawdzenie kolizji z przyciskami
       const leafRect = leaf.getBoundingClientRect();
       const buttons = document.querySelectorAll('.buttons a');
-      for (const btn of buttons) {
-        const btnRect = btn.getBoundingClientRect();
-        const collision =
-          leafRect.bottom >= btnRect.top &&
-          leafRect.top <= btnRect.bottom &&
-          leafRect.left >= btnRect.left &&
-          leafRect.right <= btnRect.right;
-  
-        if (collision) {
-          clearInterval(fall);
-          setTimeout(() => {
-            leaf.classList.add('fade-out');
-            setTimeout(() => leaf.remove(), 1000);
-          }, 1500);
-          return;
+      if (!isMobile) {
+        for (const btn of buttons) {
+          const btnRect = btn.getBoundingClientRect();
+          const collision =
+            leafRect.bottom >= btnRect.top &&
+            leafRect.top <= btnRect.bottom &&
+            leafRect.left >= btnRect.left &&
+            leafRect.right <= btnRect.right;
+      
+          if (collision) {
+            clearInterval(fall);
+            setTimeout(() => {
+              leaf.classList.add('fade-out');
+              setTimeout(() => leaf.remove(), 1000);
+            }, 1500);
+            return;
+          }
         }
       }
   
