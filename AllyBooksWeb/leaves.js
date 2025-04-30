@@ -14,6 +14,7 @@ const leafImages = [
   function spawnLeaf() {
     const leaf = document.createElement('img');
     leaf.classList.add('leaf');
+    leaf.style.zIndex = '0';
   
     const randomImage = leafImages[Math.floor(Math.random() * leafImages.length)];
     leaf.src = `img/${randomImage}`;
