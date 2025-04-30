@@ -10,11 +10,19 @@
     font-family: Arial, sans-serif;
   }
   
+  @keyframes bgPulse {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
   body {
     background: radial-gradient(circle,rgba(148, 187, 233, 1) 0%, rgba(238, 174, 202, 1) 100%);
     display: flex;
     justify-content: center;
     align-items: center;
+    background-size: 200% 200%;
+    animation: bgPulse 15s ease infinite;
   }
   
   .container {
