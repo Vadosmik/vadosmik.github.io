@@ -65,3 +65,12 @@
   .fade-out {
     opacity: 0;
   }
+
+  #ava {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%; /* okrąg */
+    border: 4px solid white; /* biała obwódka */
+    object-fit: cover; /* ładne kadrowanie */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* opcjonalny cień */
+  }
