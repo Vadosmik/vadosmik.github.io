@@ -1,76 +1,117 @@
+/* Сброс отступов и настройка box-sizing */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
   }
   
+  /* Базовые параметры страницы */
   html, body {
     height: 100%;
     overflow: hidden;
     font-family: Arial, sans-serif;
   }
   
+  /* Анимация пульсации заднего фона */
   @keyframes bgPulse {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
   }
   
+  /* Стили для body — фон и выравнивание */
   body {
-    background: radial-gradient(circle,rgba(148, 187, 233, 1) 0%, rgba(238, 174, 202, 1) 100%);
+    background: radial-gradient(circle, rgba(148, 187, 233, 1) 0%, rgba(238, 174, 202, 1) 100%);
+    background-size: 400% 400%;
+    animation: bgPulse 15s ease infinite;
+  
     display: flex;
     justify-content: center;
     align-items: center;
-    background-size: 400% 400%;
-    animation: bgPulse 15s ease infinite;
   }
   
+  /* Центровка основного содержимого */
   .container {
     text-align: center;
     color: white;
   }
   
+  /* Блок с кнопками */
   .buttons {
     margin-top: 20px;
   }
   
+  /* Стили для каждой кнопки */
   .buttons a {
     position: relative;
     display: inline-block;
     margin: 10px;
     padding: 12px 20px;
+  
     color: white;
     background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(4px);
+  
     border: 1px solid white;
     border-radius: 5px;
     text-decoration: none;
+  
     transition: background 0.3s;
-    z-index: 1000;
+    z-index: 1000; /* чтобы листья не перекрывали */
   }
   
+  /* Эффект при наведении */
   .buttons a:hover {
     background-color: rgba(255, 255, 255, 0.4);
   }
   
+  /* Стили для падающего листа */
   .leaf {
     position: absolute;
     top: 0;
     width: 30px;
     opacity: 1;
-    transition: opacity 1s ease;
     pointer-events: none;
+  
+    transition: opacity 1s ease;
   }
   
+  /* Плавное исчезновение */
   .fade-out {
     opacity: 0;
   }
-
+  
+  /* Аватарка — круглая, с белой рамкой */
   #ava {
     width: 200px;
     height: 200px;
-    border-radius: 50%; /* okrąg */
-    border: 4px solid white; /* biała obwódka */
-    object-fit: cover; /* ładne kadrowanie */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* opcjonalny cień */
+  
+    border-radius: 50%;
+    border: 4px solid white;
+    object-fit: cover;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Кнопка переключения анимации */
+   
+  #animation_btn {
+    position: fixed;         
+    bottom: 20px;            
+    right: 20px;             
+    padding: 10px 18px;
+    font-size: 16px;
+    color: white;
+    background: rgba(255, 255, 255, 0.15); /* Półprzezroczysty */
+    backdrop-filter: blur(4px);           /* Lekki blur */
+    border: 1px solid white;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1001;                        /* ponad liśćmi */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+  
+  #animation_btn:hover {
+    background: rgba(255, 255, 255, 0.3); /* jaśniej przy hoverze */
+    transform: scale(1.05);              /* lekki zoom */
   }

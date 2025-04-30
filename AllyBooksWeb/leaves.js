@@ -1,4 +1,5 @@
 const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+let animacji_status = false;
 
 const leafImages = [
     'leaf1.png',
@@ -77,4 +78,13 @@ const leafImages = [
     }, 20);
   }
 
-setInterval(spawnLeaf, 1000);
+  function toggleAnimationStatus() {
+    if (!animacji_status) {
+      leafInterval = setInterval(spawnLeaf, 1000);
+      animacji_status = true;
+    } else {
+      clearInterval(leafInterval);
+      animacji_status = false;
+    }
+  }
+
