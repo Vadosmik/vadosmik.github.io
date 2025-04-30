@@ -41,3 +41,16 @@
   .buttons a:hover {
     background-color: rgba(255, 255, 255, 0.4);
   }
+  
+  .leaf {
+    position: absolute;
+    top: 0;
+    width: 30px;
+    opacity: 1;
+    transition: opacity 1s ease;
+    pointer-events: none;
+  }
+  
+  .fade-out {
+    opacity: 0;
+  }
