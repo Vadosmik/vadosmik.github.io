@@ -1,5 +1,6 @@
 const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-let animacji_status = false;
+let animacji_status = true;
+let leafInterval = setInterval(spawnLeaf, 1000);
 
 const leafImages = [
     'leaf1.png',
