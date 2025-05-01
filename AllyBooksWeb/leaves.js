@@ -1,4 +1,3 @@
-const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 let animacji_status = true;
 let leafInterval = setInterval(spawnLeaf, 1000);
 
@@ -45,29 +44,6 @@ function spawnLeaf() {
         leaf.style.top = `${y}px`;
         leaf.style.left = `calc(${x}vw + ${offsetX}px)`;
         leaf.style.transform = `rotate(${angle}deg)`;
-
-        // Sprawdzenie kolizji z przyciskami
-        const leafRect = leaf.getBoundingClientRect();
-        const buttons = document.querySelectorAll('.buttons a');
-        if (!isMobile) {
-            for (const btn of buttons) {
-                const btnRect = btn.getBoundingClientRect();
-                const collision =
-                    leafRect.bottom >= btnRect.top &&
-                    leafRect.top <= btnRect.bottom &&
-                    leafRect.left >= btnRect.left &&
-                    leafRect.right <= btnRect.right;
-
-                if (collision) {
-                    clearInterval(fall);
-                    setTimeout(() => {
-                        leaf.classList.add('fade-out');
-                        setTimeout(() => leaf.remove(), 1000);
-                    }, 1500);
-                    return;
-                }
-            }
-        }
 
         if (y > window.innerHeight + 40) {
             clearInterval(fall);
