@@ -127,15 +127,18 @@ body {
 /* Кнопка переключения анимации */
 
 #animation {
+    position: relative;
     position: fixed;
     bottom: 20px;
     right: 20px;
     font-size: 14px;
 
     
+    z-index: 1000;
 }
 
 #animation_btn {
+    position: relative;
     padding: 10px 18px;
     font-size: 10px;
     color: white;
