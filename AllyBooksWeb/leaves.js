@@ -13,6 +13,7 @@ const leafImages = [
 ];
 
 function spawnLeaf() {
+  const container = document.getElementById('leaf-container');
     const leaf = document.createElement('img');
     leaf.classList.add('leaf');
     leaf.style.zIndex = '0';

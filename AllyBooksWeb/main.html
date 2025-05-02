@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Анимация листьев по кривой</title>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <style>
+    body { margin: 0; overflow: hidden; }
+    #plot { width: 100%; height: 100vh; position: relative; z-index: 0; }
+    .leaf {
+      position: absolute;
+      width: 32px;
+      height: 32px;
+      pointer-events: none;
+      transition: opacity 1s;
+    }
+    .fade-out { opacity: 0; }
+    .controls {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 10px;
+      border-radius: 10px;
+      z-index: 10;
+    }
+    .slider-group {
+      margin-bottom: 10px;
+    }
+    .slider-group label {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 3px;
+    }
+  </style>
+</head>
+<body>
+  <div id="plot"></div>
+  <div class="controls">
+    <div class="slider-group">
+      <label for="aRange">Начальный наклон (a)</label>
+      <input type="range" id="aRange" min="0.05" max="0.5" step="0.01" value="0.2">
+    </div>
+    <div class="slider-group">
+      <label for="kRange">Размер петли (k)</label>
+      <input type="range" id="kRange" min="1" max="5" step="0.1" value="3">
+    </div>
+    <div class="slider-group">
+      <label for="bRange">Изменение наклона после петли (b)</label>
+      <input type="range" id="bRange" min="0" max="0.5" step="0.01" value="0.1">
+    </div>
+  </div>
+
+  <script>
+    const leafImages = [
+      'img/leaf1.png', 'img/leaf2.png', 'img/leaf3.png',
+      'img/leaf4.png', 'img/leaf5.png', 'img/leaf6.png',
+      'img/leaf7.png', 'img/leaf8.png'
+    ];
+
+    let a = 0.2, k = 3.0, b = 0.1;
+    const n = 1000;
+    let xPath = [], yPath = [], leaves = [];
+
+    const layout = {
+      xaxis: { visible: false },
+      yaxis: { visible: false },
+      margin: { l: 0, r: 0, t: 0, b: 0 },
+      showlegend: false
+    };
+
+    function computePath() {
+      const t = Array.from({ length: n }, (_, i) => i * 3 * Math.PI / (n - 1));
+      xPath = t.map(ti => ti - k * Math.sin(ti));
+      yPath = t.map(ti => a * ti - k * (1 - Math.cos(ti)) + b * Math.max(ti - 2 * Math.PI, 0));
+    }
+
+    function drawPath() {
+      const trace = {
+        x: xPath,
+        y: yPath,
+        type: 'scatter',
+        mode: 'lines',
+        line: { color: '#ccc', width: 1 }
+      };
+      Plotly.newPlot('plot', [trace], layout);
+    }
+
+    function spawnLeaf() {
+      const leaf = document.createElement('img');
+      leaf.classList.add('leaf');
+      leaf.src = leafImages[Math.floor(Math.random() * leafImages.length)];
+      document.body.appendChild(leaf);
+      leaves.push({ el: leaf, i: 0 });
+    }
+
+    function animateLeaves() {
+      for (let leaf of leaves) {
+        if (leaf.i >= xPath.length) {
+          leaf.el.classList.add('fade-out');
+          setTimeout(() => leaf.el.remove(), 1000);
+        } else {
+          const xNorm = (xPath[leaf.i] - Math.min(...xPath)) / (Math.max(...xPath) - Math.min(...xPath));
+          const yNorm = (yPath[leaf.i] - Math.min(...yPath)) / (Math.max(...yPath) - Math.min(...yPath));
+          const xPx = xNorm * window.innerWidth;
+          const yPx = (1 - yNorm) * window.innerHeight;
+
+          leaf.el.style.left = `${xPx}px`;
+          leaf.el.style.top = `${yPx}px`;
+          leaf.i += 3 + Math.floor(Math.random() * 2); // немного рандома
+        }
+      }
+      leaves = leaves.filter(l => l.i < xPath.length);
+      requestAnimationFrame(animateLeaves);
+    }
+
+    document.getElementById('aRange').addEventListener('input', e => {
+      a = parseFloat(e.target.value);
+      computePath(); drawPath();
+    });
+    document.getElementById('kRange').addEventListener('input', e => {
+      k = parseFloat(e.target.value);
+      computePath(); drawPath();
+    });
+    document.getElementById('bRange').addEventListener('input', e => {
+      b = parseFloat(e.target.value);
+      computePath(); drawPath();
+    });
+
+    computePath();
+    drawPath();
+    setInterval(spawnLeaf, 500);
+    animateLeaves();
+  </script>
+</body>
+</html>

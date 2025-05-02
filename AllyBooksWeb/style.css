@@ -41,9 +41,23 @@ body {
 
 /* Центровка основного содержимого */
 .container {
+    position: relative;
+    z-index: 1;
     text-align: center;
     color: white;
-}
+  }
+#leaf-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+  
+    pointer-events: none;
+    overflow: hidden;
+    perspective: 800px;
+    z-index: 0;
+  }
 
 /* Блок с кнопками */
 .buttons {
@@ -52,7 +66,6 @@ body {
 
 /* Стили для каждой кнопки */
 .buttons a {
-    position: relative;
     display: inline-block;
     margin: 10px;
     padding: 12px 20px;
@@ -66,8 +79,6 @@ body {
     text-decoration: none;
 
     transition: background 0.3s;
-    z-index: 1000;
-    /* чтобы листья не перекрывали */
 }
 
 /* Эффект при наведении */
@@ -106,7 +117,6 @@ body {
 
 /* Аватарка — круглая, с белой рамкой */
 #ava {
-    position: relative;
     z-index: 1;
 
     width: 200px;
@@ -132,13 +142,9 @@ body {
     bottom: 20px;
     right: 20px;
     font-size: 14px;
-
-    
-    z-index: 1000;
 }
 
 #animation_btn {
-    position: relative;
     padding: 10px 18px;
     font-size: 10px;
     color: white;
