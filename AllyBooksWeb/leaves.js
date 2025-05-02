@@ -15,7 +15,7 @@ const leafImages = [
 ];
 
 function spawnLeaf() {
-  const container = document.getElementById('leaf-container');
+    const container = document.getElementById('leaf-container');
     const leaf = document.createElement('img');
     leaf.classList.add('leaf');
     leaf.style.zIndex = '0';
@@ -61,20 +61,20 @@ function spawnLeaf() {
 
 function toggleAnimation(mode) {
     if (leafInterval) {
-      clearInterval(leafInterval);
-      leafInterval = null;
+        clearInterval(leafInterval);
+        leafInterval = null;
     }
-  
+
     if (mode === 1 && animacji_status !== 1) {
-      leafInterval = setInterval(spawnLeaf, 1000);
-      animacji_status = 1;
+        leafInterval = setInterval(spawnLeaf, 1000);
+        animacji_status = 1;
     } else if (mode === 2 && animacji_status !== 2) {
-      leafInterval = setInterval(spawnWindLeaf, 800);
-      animacji_status = 2;
+        leafInterval = setInterval(spawnWindLeaf, 800);
+        animacji_status = 2;
     } else {
-      animacji_status = 0;
+        animacji_status = 0;
     }
-  }
+}
 
 function spawnWindLeaf() {
     const leaf = document.createElement('img');
@@ -86,52 +86,54 @@ function spawnWindLeaf() {
     leaf.style.left = '0px';
     document.body.appendChild(leaf);
 
-  
+
     // Losowe parametry ruchu po trajektorii matematycznej
-    const a = 0.1 + Math.random() * 0.3;
-    const k = 2.5 + Math.random() * 1.5;
-    const b = 0.05 + Math.random() * 0.15;
-    const speed = 0.05 + Math.random(); 
-    const rotationSpeed = Math.random() * 2 - 1;
-  
-    const n = 500;
+    const a = 0.05 + Math.random() * 0.6;
+    const k = 1.5 + Math.random() * 4.5;
+    const b = 0.05 + Math.random() * 0.3;
+    const speed = 0.05 + Math.random() * 0.8;
+    const rotationSpeed = Math.random() * 4 - 2;
+
+    const n = 600 + Math.floor(Math.random() * 300); // zamiast 400–700
     const t = Array.from({ length: n }, (_, i) => i * 3 * Math.PI / (n - 1));
     const xPath = t.map(ti => ti - k * Math.sin(ti));
     const yPath = t.map(ti => a * ti - k * (1 - Math.cos(ti)) + b * Math.max(ti - 2 * Math.PI, 0));
-  
+
     const xMin = Math.min(...xPath), xMax = Math.max(...xPath);
     const yMin = Math.min(...yPath), yMax = Math.max(...yPath);
-  
+
     let i = 0;
     let angle = 0;
-  
+
     function animate() {
-      if (i >= xPath.length) {
-        leaf.classList.add('fade-out');
-        setTimeout(() => leaf.remove(), 1000);
-        return;
-      }
-  
-      const xNorm = (xPath[i] - xMin) / (xMax - xMin);
-      const yNorm = (yPath[i] - yMin) / (yMax - yMin);
-  
-      let xPx, yPx;
-      if (isMobile) {
-        xPx = (1 - yNorm) * window.innerWidth;
-        yPx = xNorm * window.innerHeight;
-      } else {
-        xPx = xNorm * window.innerWidth;
-        yPx = (1 - yNorm) * window.innerHeight;
-      }
-      
-      leaf.style.left = `${xPx}px`;
-      leaf.style.top = `${yPx}px`;
-      angle += rotationSpeed;
-      leaf.style.transform = `rotate(${angle}deg)`;
-  
-      i += Math.ceil(speed * 2);
-      requestAnimationFrame(animate);
+        if (i >= xPath.length) {
+            leaf.classList.add('fade-out');
+            setTimeout(() => leaf.remove(), 1000);
+            return;
+        }
+
+        const xNorm = (xPath[i] - xMin) / (xMax - xMin);
+        const yNorm = (yPath[i] - yMin) / (yMax - yMin);
+
+        let xPx, yPx;
+        if (isMobile) {
+            xPx = (1 - yNorm) * window.innerWidth;
+            yPx = xNorm * window.innerHeight;
+        } else {
+            xPx = xNorm * window.innerWidth;
+            yPx = (1 - yNorm) * window.innerHeight;
+        }
+
+        xPx *= 1.2;
+
+        leaf.style.left = `${xPx}px`;
+        leaf.style.top = `${yPx}px`;
+        angle += rotationSpeed;
+        leaf.style.transform = `rotate(${angle}deg)`;
+
+        i += Math.ceil(speed * 2);
+        requestAnimationFrame(animate);
     }
-  
+
     animate();
-  }
+}
