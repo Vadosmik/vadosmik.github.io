@@ -163,3 +163,50 @@ body {
     transform: scale(1.05);
 }
 
+/* tab view */
+
+/* Styl i animacja panelu ustawień */
+#animation .tab-content {
+    position: fixed;
+    right: -200px; /* ukryty poza ekranem */
+    bottom: 70px;
+  
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(6px);
+    border: 1px solid white;
+    border-radius: 8px;
+  
+    transition: right 0.4s ease-in-out, opacity 0.4s ease-in-out;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 999;
+  }
+  
+  #animation .tab-content.open {
+    right: 20px;
+    opacity: 1;
+    pointer-events: auto;
+  }
+  
+  /* Styl przycisku ⚙️ */
+  #animation .tab-view button {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid white;
+    border-radius: 50%;
+    font-size: 18px;
+    padding: 10px;
+    color: white;
+    cursor: pointer;
+    backdrop-filter: blur(4px);
+    transition: background 0.3s, transform 0.2s;
+  }
+  
+  #animation .tab-view button:hover {
+    background: rgba(255, 255, 255, 0.4);
+    transform: scale(1.1);
+  }

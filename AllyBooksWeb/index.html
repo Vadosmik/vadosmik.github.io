@@ -13,22 +13,31 @@
 
     <div class="container">
         <img id="ava" src="img/ava.jpg" alt="Avatar">
-        <h1>AllyBooks📚!</h1>
+        <h1>AllyBooks</h1>
         <div class="buttons">
+            <a href="https://t.me/HeartstopperTranslate" target="_blank">Telegram</a>
             <a href="https://www.tiktok.com/@ally_books_comics?_t=8pgz6AAP4lM&_r=1" target="_blank">TikTok</a>
             <a href="https://pin.it/WszvmJ1Yk" target="_blank">Pinterest</a>
-            <a href="https://t.me/HeartstopperTranslate" target="_blank">Telegram</a>
-            <a href="https://t.me/AllyBooksBot" target="_blank">Telegram_BOT</a>
+            <a href="https://ficbook.net/authors/01960fc7-b01c-70a8-bb42-298e2af331d2" target="_blank">Ficbook</a>
         </div>
 
         <div id="animation">
-            <p>Анимация:</p>
-            <button id="animation_btn" onclick="toggleAnimation(1)">падение</button>
-            <button id="animation_btn" onclick="toggleAnimation(2)">ветер</button>
-            <button id="animation_btn" onclick="toggleAnimation(3)">Stop</button>
+            <nav class="tab-view" aria-label="Tabulator">
+                <ul>
+                    <li><button type="button" id="setting">⚙️</button></li>
+                </ul>
+            </nav>
+            <section id="setting" class="tab-content">
+                <button id="animation_btn" onclick="toggleAnimation(1)">падение</button>
+                <button id="animation_btn" onclick="toggleAnimation(2)">ветер</button>
+                <button id="animation_btn" onclick="toggleAnimation(3)">Stop</button>
+            </section>
+            <!-- <p>Анимация:</p> -->
+
         </div>
     </div>
 
+    <script src="tabView.js"></script>
     <script src="leaves.js"></script>
 </body>
 
