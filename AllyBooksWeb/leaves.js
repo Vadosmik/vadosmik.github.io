@@ -1,7 +1,7 @@
 const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 let animacji_status = true;
 //let leafInterval = setInterval(spawnLeaf, 1000);
-let leafInterval = setInterval(spawnWindLeaf, 1000);
+let leafInterval = setInterval(spawnWindLeaf, 800);
 
 const leafImages = [
     'leaf1.png',
@@ -69,7 +69,7 @@ function toggleAnimation(mode) {
       leafInterval = setInterval(spawnLeaf, 1000);
       animacji_status = 1;
     } else if (mode === 2 && animacji_status !== 2) {
-      leafInterval = setInterval(spawnWindLeaf, 1000);
+      leafInterval = setInterval(spawnWindLeaf, 800);
       animacji_status = 2;
     } else {
       animacji_status = 0;
