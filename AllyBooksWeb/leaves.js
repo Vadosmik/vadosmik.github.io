@@ -119,12 +119,15 @@ function spawnWindLeaf() {
         if (isMobile) {
             xPx = (1 - yNorm) * window.innerWidth;
             yPx = xNorm * window.innerHeight;
+
+            yPx *= 1.2;
         } else {
             xPx = xNorm * window.innerWidth;
             yPx = (1 - yNorm) * window.innerHeight;
+
+            xPx *= 1.2;
         }
 
-        xPx *= 1.2;
 
         leaf.style.left = `${xPx}px`;
         leaf.style.top = `${yPx}px`;
