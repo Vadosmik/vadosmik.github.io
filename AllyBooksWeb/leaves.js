@@ -84,6 +84,7 @@ function spawnWindLeaf() {
     leaf.style.top = '0px';
     leaf.style.left = '0px';
     document.body.appendChild(leaf);
+
   
     // Losowe parametry ruchu po trajektorii matematycznej
     const a = 0.1 + Math.random() * 0.3;
@@ -113,8 +114,8 @@ function spawnWindLeaf() {
       const xNorm = (xPath[i] - xMin) / (xMax - xMin);
       const yNorm = (yPath[i] - yMin) / (yMax - yMin);
   
-      const xPx = xNorm * window.innerWidth;
-      const yPx = (1 - yNorm) * window.innerHeight;
+      const xPx = (1 - yNorm) * window.innerWidth;
+      const yPx = xNorm * window.innerHeight;
   
       leaf.style.left = `${xPx}px`;
       leaf.style.top = `${yPx}px`;
