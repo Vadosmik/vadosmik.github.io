@@ -1,3 +1,4 @@
+const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 let animacji_status = true;
 //let leafInterval = setInterval(spawnLeaf, 1000);
 let leafInterval = setInterval(spawnWindLeaf, 500);
@@ -114,9 +115,15 @@ function spawnWindLeaf() {
       const xNorm = (xPath[i] - xMin) / (xMax - xMin);
       const yNorm = (yPath[i] - yMin) / (yMax - yMin);
   
-      const xPx = (1 - yNorm) * window.innerWidth;
-      const yPx = xNorm * window.innerHeight;
-  
+      let xPx, yPx;
+      if (isMobile) {
+        xPx = (1 - yNorm) * window.innerWidth;
+        yPx = xNorm * window.innerHeight;
+      } else {
+        xPx = xNorm * window.innerWidth;
+        yPx = (1 - yNorm) * window.innerHeight;
+      }
+      
       leaf.style.left = `${xPx}px`;
       leaf.style.top = `${yPx}px`;
       angle += rotationSpeed;
