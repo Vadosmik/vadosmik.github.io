@@ -137,15 +137,6 @@ function toggleAnimation(mode) {
     } else if (mode === 2 && animacji_status !== 2) {
       animacji_status = 2;
       spawnWindLeafRandom();
-    } else if (mode === 3 && animacji_status !== 3) {
-        spawnLeafGyro();
-        spawnLeafGyro();
-        spawnLeafGyro();
-        spawnLeafGyro();
-        spawnLeafGyro();
-        spawnLeafGyro();
-        spawnLeafGyro();
-        spawnLeafGyro();
     } else {
       animacji_status = 0;
     }
@@ -169,54 +160,3 @@ function toggleAnimation(mode) {
     const randomMode = Math.random() < 0.5 ? 1 : 2;
     toggleAnimation(randomMode);
   });
-
-  //===============================================
-
-  let gyroTiltX = 0; // Nachylenie lewo-prawo (beta)
-let gyroTiltY = 0; // Nachylenie przód-tył (gamma)
-
-// Odbieranie danych z żyroskopu
-window.addEventListener('deviceorientation', (event) => {
-  gyroTiltX = event.beta || 0;
-  gyroTiltY = event.gamma || 0;
-});
-
-function spawnLeafGyro() {
-    const leaf = document.createElement('img');
-    leaf.classList.add('leaf');
-    leaf.src = `img/${leafImages[Math.floor(Math.random() * leafImages.length)]}`;
-    leaf.style.position = 'absolute';
-    leaf.style.zIndex = '0';
-    leaf.style.left = `${Math.random() * 90}vw`;
-    leaf.style.top = `-50px`;
-    document.body.appendChild(leaf);
-  
-    let x = parseFloat(leaf.style.left);
-    let y = 0;
-    let angle = 0;
-  
-    const speed = 0.5 + Math.random() * 1.5;
-    const amplitude = 20 + Math.random() * 30;
-    const frequency = 0.01 + Math.random() * 0.02;
-    const rotationSpeed = Math.random() * 2 - 1;
-  
-    const fall = setInterval(() => {
-      y += speed;
-      angle += rotationSpeed;
-  
-      // Nachylenie urządzenia wpływa na kierunek
-      const offsetX = amplitude * Math.sin(y * frequency) + gyroTiltY * 2;
-  
-      leaf.style.top = `${y}px`;
-      leaf.style.left = `calc(${x}vw + ${offsetX}px)`;
-      leaf.style.transform = `rotate(${angle}deg)`;
-  
-      if (y > window.innerHeight + 40) {
-        clearInterval(fall);
-        setTimeout(() => {
-          leaf.classList.add('fade-out');
-          setTimeout(() => leaf.remove(), 1000);
-        }, 2000);
-      }
-    }, 20);
-  }
