@@ -1,7 +1,6 @@
 const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-let animacji_status = true;
-//let leafInterval = setInterval(spawnLeaf, 1000);
-let leafInterval = setInterval(spawnWindLeaf, 800);
+let animacji_status = 0;
+let leafTimeout = null;
 
 const leafImages = [
     'leaf1.png',
@@ -11,7 +10,8 @@ const leafImages = [
     'leaf5.png',
     'leaf6.png',
     'leaf7.png',
-    'leaf8.png'
+    'leaf8.png',
+    'leaf9.png'
 ];
 
 function spawnLeaf() {
@@ -28,10 +28,10 @@ function spawnLeaf() {
     document.body.appendChild(leaf);
 
     // Losowe parametry wiatru i fali
-    const speed = 0.5 + Math.random() * 1.5;         // Prędkość opadania
-    const amplitude = 30 + Math.random() * 20;       // Amplituda fali w px
-    const frequency = 0.01 + Math.random() * 0.02;   // Częstotliwość fali
-    const rotationSpeed = Math.random() * 2 - 1;     // Kierunek obrotu
+    const speed = 0.5 + Math.random() * 1.5;
+    const amplitude = 30 + Math.random() * 20;
+    const frequency = 0.01 + Math.random() * 0.02;
+    const rotationSpeed = Math.random() * 2 - 1;
 
     let x = parseFloat(leaf.style.left);
     let y = 0;
@@ -56,24 +56,6 @@ function spawnLeaf() {
             }, 2000);
         }
     }, 20);
-}
-
-
-function toggleAnimation(mode) {
-    if (leafInterval) {
-        clearInterval(leafInterval);
-        leafInterval = null;
-    }
-
-    if (mode === 1 && animacji_status !== 1) {
-        leafInterval = setInterval(spawnLeaf, 1000);
-        animacji_status = 1;
-    } else if (mode === 2 && animacji_status !== 2) {
-        leafInterval = setInterval(spawnWindLeaf, 800);
-        animacji_status = 2;
-    } else {
-        animacji_status = 0;
-    }
 }
 
 function spawnWindLeaf() {
@@ -143,8 +125,38 @@ function spawnWindLeaf() {
 
 
 
+function toggleAnimation(mode) {
+    if (leafTimeout) {
+      clearTimeout(leafTimeout);
+      leafTimeout = null;
+    }
+  
+    if (mode === 1 && animacji_status !== 1) {
+      animacji_status = 1;
+      spawnLeafRandom();
+    } else if (mode === 2 && animacji_status !== 2) {
+      animacji_status = 2;
+      spawnWindLeafRandom();
+    } else {
+      animacji_status = 0;
+    }
+  }
 
+  function spawnLeafRandom() {
+    if (animacji_status !== 1) return;
+    spawnLeaf(); // twoja funkcja generująca liścia
+    const delay = Math.random() * 700 + 300; // losowo 300–1000ms
+    leafTimeout = setTimeout(spawnLeafRandom, delay);
+  }
+  
+  function spawnWindLeafRandom() {
+    if (animacji_status !== 2) return;
+    spawnWindLeaf(); // inna wersja liścia
+    const delay = Math.random() * 700 + 300; // 300–1000ms
+    leafTimeout = setTimeout(spawnWindLeafRandom, delay);
+  }
 
-
-
- 
+  window.addEventListener('DOMContentLoaded', () => {
+    const randomMode = Math.random() < 0.5 ? 1 : 2;
+    toggleAnimation(randomMode);
+  });

@@ -1,4 +1,3 @@
-document.querySelector('.tab-view button').addEventListener('click', () => {
-    const panel = document.querySelector('#animation .tab-content');
-    panel.classList.toggle('open');
+document.querySelector('#setting-btn').addEventListener('click', () => {
+    document.querySelector('#animation').classList.toggle('open');
   });

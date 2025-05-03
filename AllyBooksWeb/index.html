@@ -12,7 +12,7 @@
     <div id="leaf-container"></div>
 
     <div class="container">
-        <img id="ava" src="img/ava.jpg" alt="Avatar">
+        <img id="ava" src="img/ava.jpg" alt="Avatar"><br><br>
         <h1>Ally Books</h1>
         <div class="buttons">
             <a href="https://t.me/HeartstopperTranslate" target="_blank">Telegram</a>
@@ -22,19 +22,16 @@
         </div>
 
         <div id="animation">
-            <nav class="tab-view" aria-label="Tabulator">
-                <ul>
-                    <li><button type="button" id="setting"><img src="img/setting.PNG"></button></li>
-                </ul>
-            </nav>
-            <section id="setting" class="tab-content">
-                <button id="animation_btn" onclick="toggleAnimation(1)">падение</button>
-                <button id="animation_btn" onclick="toggleAnimation(2)">ветер</button>
-                <button id="animation_btn" onclick="toggleAnimation(3)">Stop</button>
+            <button type="button" id="setting-btn">
+              <img src="img/setting.PNG" alt="Ustawienia">
+            </button><br>
+          
+            <section id="setting-panel" class="tab-content">
+              <button class="animation_btn" onclick="toggleAnimation(1)">падение</button>
+              <button class="animation_btn" onclick="toggleAnimation(2)">ветер</button>
+              <button class="animation_btn" onclick="toggleAnimation(3)">Stop</button>
             </section>
-            <!-- <p>Анимация:</p> -->
-
-        </div>
+          </div>
     </div>
 
     <script src="tabView.js"></script>
