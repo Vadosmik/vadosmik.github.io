@@ -26,3 +26,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
   window.addEventListener('beforeunload', () => window.scrollTo(0, 0));
 });
+
+let touchStartY = 0;
+let touchEndY = 0;
+
+window.addEventListener('touchstart', (e) => {
+  touchStartY = e.changedTouches[0].screenY;
+});
+
+window.addEventListener('touchend', (e) => {
+  touchEndY = e.changedTouches[0].screenY;
+  handleGesture();
+});
+
+function handleGesture() {
+  if (isScrolling) return;
+
+  const swipeDistance = touchStartY - touchEndY;
+  const threshold = 50; // minimalna odległość do uznania gestu
+
+  if (swipeDistance > threshold && currentPage < totalPages - 1) {
+    // swipe up
+    currentPage++;
+    scrollToPage(currentPage);
+  } else if (swipeDistance < -threshold && currentPage > 0) {
+    // swipe down
+    currentPage--;
+    scrollToPage(currentPage);
+  }
+}
