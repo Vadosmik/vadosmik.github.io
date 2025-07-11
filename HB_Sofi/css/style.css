@@ -1,16 +1,22 @@
+@font-face {
+  font-family: 'maks';
+  src: url('../font/maks.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body,
-html {
-    height: 100%;
-    font-family: 'Poppins', sans-serif;
-    overflow: hidden;
-    touch-action: none;
-    background-color: #fff;
+body, html {
+  height: 100%;
+  font-family: 'maks', cursive, sans-serif;
+  background-color: #fff;
+  overflow: hidden;
+  touch-action: none;
 }
 
 main#scroller {
