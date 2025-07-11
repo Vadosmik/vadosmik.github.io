@@ -15,7 +15,7 @@ html {
 
 main#scroller {
     width: 100vw;
-    height: 300vh;
+    height: auto;
     display: flex;
     flex-direction: column;
     transition: transform 0.7s ease;
@@ -38,9 +38,24 @@ main#scroller {
     color: #3e3e3e;
 }
 
-.style2 {
-    background-color: #f5e4e4;
-    color: #2f4f4f;
+.style2-1 {
+  background-color: #f9e2e7; /* Pastel Rose */
+  color: #2f2f2f;
+}
+
+.style2-2 {
+  background-color: #fce8e1; /* Peach Fizz */
+  color: #2f2f2f;
+}
+
+.style2-3 {
+  background-color: #eae6f9; /* Soft Lavender */
+  color: #2f2f2f;
+}
+
+.style2-4 {
+  background-color: #dcf4ec; /* Mint Whisper */
+  color: #2f2f2f;
 }
 
 .style3 {
