@@ -64,7 +64,7 @@ p {
 
 aside {
     position: absolute;
-    top: 95vh;
+    top: 85vh;
     font-size: 0.95rem;
     color: #666;
     animation: bounce 1.5s infinite;
