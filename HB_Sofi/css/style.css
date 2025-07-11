@@ -61,8 +61,6 @@ main#scroller {
 .style3 {
     background-color: #e8e9fc;
     position: relative;
-    padding: 0;
-    overflow: hidden;
 }
 
 h2 {
@@ -77,7 +75,7 @@ p {
     max-width: 600px;
 }
 
-aside {
+.style1 aside {
     position: absolute;
     top: 85vh;
     font-size: 0.95rem;
@@ -110,6 +108,17 @@ aside {
     line-height: 1.6;
 }
 
+.bottom-note {
+  position: absolute;
+  width: 100vw;
+  text-align: center;
+  bottom: 100px;
+  font-size: 0.95rem;
+  color: #666;
+  animation: bounce 1.5s infinite;
+  z-index: 2;
+}
+
 @keyframes bounce {
 
     0%,
@@ -120,4 +129,33 @@ aside {
     50% {
         transform: translateY(-10px);
     }
+}
+
+.page.visible p span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeInLine 0.6s forwards;
+}
+
+.page.visible p span:nth-child(1) { animation-delay: 0.2s; }
+.page.visible p span:nth-child(2) { animation-delay: 0.6s; }
+.page.visible p span:nth-child(3) { animation-delay: 0.8s; }
+
+@keyframes fadeInLine {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-image: url('data:image/svg+xml;utf8,<svg ...>');
+  opacity: 0.04;
+  z-index: 0;
+  pointer-events: none;
 }
