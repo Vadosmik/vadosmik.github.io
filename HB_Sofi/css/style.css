@@ -39,28 +39,40 @@ main#scroller {
 }
 
 .style2-1 {
-  background-color: #f9e2e7; /* Pastel Rose */
+  background: linear-gradient(130deg, #f9e2e7, #fce8e1);
+  background-size: 200% 200%;
+  animation: gradientShift 15s ease infinite;
   color: #2f2f2f;
 }
 
 .style2-2 {
-  background-color: #fce8e1; /* Peach Fizz */
+  background: linear-gradient(130deg, #fce8e1, #eae6f9);
+  background-size: 200% 200%;
+  animation: gradientShift 15s ease infinite;
   color: #2f2f2f;
 }
 
 .style2-3 {
-  background-color: #eae6f9; /* Soft Lavender */
+  background: linear-gradient(130deg, #eae6f9, #dcf4ec);
+  background-size: 200% 200%;
+  animation: gradientShift 15s ease infinite;
   color: #2f2f2f;
 }
 
 .style2-4 {
-  background-color: #dcf4ec; /* Mint Whisper */
+  background: linear-gradient(130deg, #dcf4ec, #f9e2e7);
+  background-size: 200% 200%;
+  animation: gradientShift 15s ease infinite;
   color: #2f2f2f;
 }
 
 .style3 {
-    background-color: #e8e9fc;
-    position: relative;
+  background: linear-gradient(130deg, #e8e9fc, #f9e2e7);
+  background-size: 200% 200%;
+  animation: gradientShift 15s ease infinite;
+  position: relative;
+  padding: 0;
+  overflow: hidden;
 }
 
 h2 {
@@ -131,21 +143,26 @@ p {
     }
 }
 
-.page.visible p span {
-  display: inline-block;
+.page p span {
   opacity: 0;
-  transform: translateY(10px);
-  animation: fadeInLine 0.6s forwards;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  display: inline-block;
+}
+
+.page.visible p span {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .page.visible p span:nth-child(1) { animation-delay: 0.2s; }
-.page.visible p span:nth-child(2) { animation-delay: 0.4s; }
-.page.visible p span:nth-child(3) { animation-delay: 0.6s; }
+.page.visible p span:nth-child(2) { animation-delay: 0.6s; }
+.page.visible p span:nth-child(3) { animation-delay: 0.8s; }
 
 @keyframes fadeInLine {
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0.2);
   }
 }
 
