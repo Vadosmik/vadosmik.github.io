@@ -207,11 +207,9 @@ p {
 .ticker-line {
   position: relative;
   overflow: hidden;
-  rotate: -15deg;
   width: 150vw;
   height: 50px;
   white-space: nowrap;
-  top: 280px;
 }
 
 .ticker-track {
