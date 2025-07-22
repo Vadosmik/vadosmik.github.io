@@ -5,8 +5,15 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'stl';
+  src: url('../font/SomeTimeLater.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 :root {
-  --font-main: 'maks', cursive, sans-serif;
+  --font-main: 'stl', cursive, sans-serif;
 
   /* Tła i gradienty */
  --color-bg-1: #d8f2e0;
@@ -122,6 +129,7 @@ p {
   font-size: 0.95rem;
   color: var(--color-text-light);
   animation: bounce 1.5s infinite;
+	z-index: 2;
 }
 
 #magicCanvas {
