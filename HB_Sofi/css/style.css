@@ -5,75 +5,98 @@
   font-style: normal;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+:root {
+  --font-main: 'maks', cursive, sans-serif;
+
+  /* Tła i gradienty */
+ --color-bg-1: #d8f2e0;
+  --color-bg-2a: #ffe0ec;
+  --color-bg-2b: #ffd9b3;
+  --color-bg-3a: #e3ddfa;
+  --color-bg-3b: #d0f0ef;
+  --color-bg-final: #dee1fc;
+
+  /* Teksty */
+  --color-text-dark: #2f2f2f;
+  --color-text-mid: #3e3e3e;
+  --color-text-light: #666;
+  --color-overlay: #333;
+
+  /* Inne */
+  --color-ticker: #f3ef01;
+  --canvas-bg: #e8e9fc;
 }
 
-body, html {
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
   height: 100%;
-  font-family: 'maks', cursive, sans-serif;
-  background-color: #fff;
+  font-family: var(--font-main);
+  background-color: var(--color-white);
   overflow: hidden;
   touch-action: none;
 }
 
 main#scroller {
-    width: 100vw;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.7s ease;
-    will-change: transform;
+  width: 100vw;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.7s ease;
+  will-change: transform;
 }
 
 .page {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    text-align: center;
-    padding: 1.5rem;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 1.5rem;
 }
 
 .style1 {
-    background-color: #e0f6dc;
-    color: #3e3e3e;
+  background-color: var(--color-bg-1);
+  color: var(--color-text-mid);
 }
 
 .style2-1 {
-  background: linear-gradient(130deg, #f9e2e7, #fce8e1);
+  background: linear-gradient(130deg, var(--color-bg-2a), var(--color-bg-2b));
   background-size: 200% 200%;
   animation: gradientShift 15s ease infinite;
-  color: #2f2f2f;
+  color: var(--color-text-dark);
 }
 
 .style2-2 {
-  background: linear-gradient(130deg, #fce8e1, #eae6f9);
+  background: linear-gradient(130deg, var(--color-bg-2b), var(--color-bg-3a));
   background-size: 200% 200%;
   animation: gradientShift 15s ease infinite;
-  color: #2f2f2f;
+  color: var(--color-text-dark);
 }
 
 .style2-3 {
-  background: linear-gradient(130deg, #eae6f9, #dcf4ec);
+  background: linear-gradient(130deg, var(--color-bg-3a), var(--color-bg-3b));
   background-size: 200% 200%;
   animation: gradientShift 15s ease infinite;
-  color: #2f2f2f;
+  color: var(--color-text-dark);
 }
 
 .style2-4 {
-  background: linear-gradient(130deg, #dcf4ec, #f9e2e7);
+  background: linear-gradient(130deg, var(--color-bg-3b), var(--color-bg-2a));
   background-size: 200% 200%;
   animation: gradientShift 15s ease infinite;
-  color: #2f2f2f;
+  color: var(--color-text-dark);
 }
 
 .style3 {
-  background: linear-gradient(130deg, #e8e9fc, #f9e2e7);
+  background: linear-gradient(130deg, var(--color-bg-final), var(--color-bg-2a));
   background-size: 200% 200%;
   animation: gradientShift 15s ease infinite;
   position: relative;
@@ -82,48 +105,47 @@ main#scroller {
 }
 
 h2 {
-    font-size: 1.6rem;
-    margin-bottom: 1rem;
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
 }
 
 p {
-    font-size: 1.05rem;
-    line-height: 1.6;
-    margin-bottom: 1rem;
-    max-width: 600px;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  max-width: 600px;
 }
 
 .style1 aside {
-    position: absolute;
-    top: 85vh;
-    font-size: 0.95rem;
-    color: #666;
-    animation: bounce 1.5s infinite;
+  position: absolute;
+  top: 85vh;
+  font-size: 0.95rem;
+  color: var(--color-text-light);
+  animation: bounce 1.5s infinite;
 }
 
 #magicCanvas {
-    background-color: #e8e9fc;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: block;
-    z-index: 0;
+  background-color: var(--canvas-bg);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  z-index: 0;
 }
 
 .overlay-text {
-    position: relative;
-    z-index: 1;
-    color: #fff;
-    text-align: center;
-    padding: 2rem;
-    color: #333;
+  position: relative;
+  z-index: 1;
+  color: var(--color-overlay);
+  text-align: center;
+  padding: 2rem;
 }
 
 .overlay-text p {
-    font-size: 1.5rem;
-    line-height: 1.6;
+  font-size: 1.5rem;
+  line-height: 1.6;
 }
 
 .bottom-note {
@@ -132,21 +154,18 @@ p {
   text-align: center;
   bottom: 100px;
   font-size: 0.95rem;
-  color: #666;
+  color: var(--color-text-light);
   animation: bounce 1.5s infinite;
   z-index: 2;
 }
 
 @keyframes bounce {
-
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-10px);
-    }
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 .page p span {
@@ -175,10 +194,45 @@ p {
 .page::before {
   content: "";
   position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background-image: url('data:image/svg+xml;utf8,<svg ...>');
   opacity: 0.04;
   z-index: 0;
   pointer-events: none;
+}
+
+.ticker-line {
+  position: relative;
+  overflow: hidden;
+  rotate: -15deg;
+  width: 150vw;
+  height: 50px;
+  white-space: nowrap;
+  top: 280px;
+}
+
+.ticker-track {
+  display: inline-block;
+  white-space: nowrap;
+  animation: ticker 15s linear infinite;
+}
+
+.ticker-track span {
+  display: inline-block;
+  padding: 17.5px 20px 10px 20px;
+  background-color: var(--color-ticker);
+  margin: -5px;
+  font-weight: bold;
+}
+
+@keyframes ticker {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
