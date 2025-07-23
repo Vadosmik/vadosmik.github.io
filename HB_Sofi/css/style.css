@@ -6,14 +6,14 @@
 }
 
 @font-face {
-  font-family: 'celestia';
-  src: url('../font/celestiareduxmedium.ttf') format('truetype');
+  font-family: 'stl';
+  src: url('../font/SomeTimeLater.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }
 
 :root {
-  --font-main: 'celestia', cursive, sans-serif;
+  --font-main: 'stl', cursive, sans-serif;
 
   /* Tła i gradienty */
  --color-bg-1: #d8f2e0;
