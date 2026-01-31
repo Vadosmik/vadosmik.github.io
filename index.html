@@ -2,105 +2,49 @@
 <html>
 
 <head>
-    <title>Page Title</title>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/style.css">
+  <title>Vadzim Mikanovich</title>
+  <meta charset="UTF-8">
+  <meta name="author" content="Vadzim Mikanovich">
+  <meta name="keywords" content="Vadzim Mikanovich, CV, vadosmik">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-    <main>
-        <p id="main-text"> VADZIM MIKANOVICH </p>
-    </main>
+  <header>
+    <h1><span>Hi, I'm</span>Vadzim Mikanovich</h1>
+    <p>Cloud Developer | Informatics Student</p>
+  </header>
 
-    <nav class="tab-view" aria-label="Tabulator">
-        <ul>
-            <li><button type="button" id="cv">CV</button></li>
-            <li><button type="button" id="about">ABOUT ME</button></li>
-            <li><button type="button" id="project">PROJECT</button></li>
-        </ul>
-    </nav>
+  <main>
 
-    <!-- Okna -->
-    <section id="cv" class="tab-content">
-        <div class="cv-preview-container">
-            <img src="img/VadimMikanovich_CV.pdf" alt="Preview of CV" class="cv-preview" />
+    <div class="block">
+      <h2>Cloud Infrastucture</h2>
+      <div class="element">
+        <div>
+          <span class="icon icon-docker"></span>
+          <p>Docker</p>
         </div>
-        <div class="cv-actions">
-            <a href="img/VadimMikanovich_CV.pdf" target="_blank" class="cv-button">Zobacz pełny CV (PDF)</a>
-            <a href="img/VadimMikanovich_CV.pdf" download class="cv-button download">Pobierz CV</a>
+        <div>
+          <span class="icon icon-aws"></span>
+          <p>AWS</p>
         </div>
-    </section>
-    <section id="about" class="tab-content">
-        <p>
-            Student Informatyki na Uniwersytecie Morskim w Gdyni.
-          </p>
-          <p>
-            Interesuję się nowymi technologiami i chętnie uczę się nowych rzeczy, aby móc je wykorzystywać w praktyce.
-          </p>
-          <p>
-            Uwielbiam pracować nad projektami, które mają realne zastosowanie i przynoszą praktyczne korzyści.
-          </p>
-    </section>
-    <section id="project" class="tab-content">
-        <div class="project">
-            <h3>Konkursowy Bot Telegrama</h3>
-            <p>
-                Bot konkursowy stworzony w języku Python z wykorzystaniem biblioteki <strong>pyTelegramBotAPI</strong>.<br>
-                Projekt został zaprojektowany z myślą o organizacji konkursów w komunikatorze Telegram, <br>
-                umożliwiając użytkownikom przesyłanie własnych zgłoszeń, głosowanie na prace<br>
-                innych uczestników oraz śledzenie wyników w czasie rzeczywistym.<br>
-            </p>
-            <p>
-                Wbudowany system zarządzania zgłoszeniami wykorzystuje dynamiczne słowniki do przechowywania danych w<br>
-                trakcie działania, a konfiguracja środowiska opiera się na pliku <code>.env</code> dla bezpiecznego<br>
-                przechowywania tokenów i danych dostępowych. Dodatkowo, bot posiada wbudowany panel administracyjny,<br>
-                pozwalający na szybkie zarządzanie etapami konkursu bezpośrednio z poziomu chatu.<br>
-            </p>
-            <p><strong>Funkcje kluczowe:</strong></p>
-            <ul>
-                <li>Obsługa zgłoszeń użytkowników (np. tekst, obraz, link)</li>
-                <li>System głosowania z liczeniem punktów</li>
-                <li>Wyświetlanie listy zgłoszeń i wyników</li>
-                <li>Panel administratora z opcjami zarządzania konkursem</li>
-                <li>Konfiguracja przez plik <code>.env</code></li>
-            </ul>
-            <p><strong>Technologie:</strong> Python, pyTelegramBotAPI, dotenv</p>
-            <!-- <a href="https://github.com/Vadosmik/telegram-bot" target="_blank">Zobacz bota</a> -->
-            <a href="https://github.com/Vadosmik/telegram-bot" target="_blank">Kod źródłowy</a>
-        </div>
+      </div>
+    </div>
 
-        <div class="project">
-            <h3>Nazwa drugiego projektu</h3>
-            <p>Opis itd.</p>
-        </div>
-    </section>
+    <div class="block">
+      <h2>Projects</h2>
+      <div class="element">
 
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+
+  </footer>
 </body>
-
-<script>
-    const buttons = document.querySelectorAll('.tab-view button');
-    const sections = document.querySelectorAll('.tab-content');
-
-    let activeTabId = null;
-
-    buttons.forEach(button => {
-        button.addEventListener('click', () => {
-            const tabId = button.getAttribute('id');
-
-            if (activeTabId === tabId) {
-                activeTabId = null;
-                sections.forEach(sec => sec.classList.remove('open'));
-                buttons.forEach(btn => btn.classList.remove('active'));
-            } else {
-                activeTabId = tabId;
-                sections.forEach(sec => {
-                    sec.classList.toggle('open', sec.id === tabId);
-                });
-                buttons.forEach(btn => btn.classList.toggle('active', btn.id === tabId));
-            }
-        });
-    });
-</script>
 
 </html>
