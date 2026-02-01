@@ -54,7 +54,9 @@ html {
 
 /* === HEADER === */
 header {
-  height: 100vh;
+  height: calc(100vh + 100px);
+  margin-bottom: -100px;
+
   background-image: url("/img/bg.png");
   background-position: center;
   background-repeat: no-repeat;
